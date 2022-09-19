@@ -78,7 +78,6 @@ for i in `ls *_1_*|tr "_" "\t"|cut -f1`;do sed "s/test01/$i/g" ../SNP_CALLtest01
 for i in `ls *_1_*|tr "_" "\t"|cut -f1`;do qsub -V -cwd -q all.q,fat.q -l vf=6G -pe smp 3 -S /bin/bash  SNP_CALL$i.sh;done
 ```
 - gvcf合并(要等所有样本的gvcf都出来之后，可以分群体也可以一块合并，如果分群体最后也是要一块合并的)
-**这一步可以分染色进行，建议不要在我们自己服务器上跑，会非常慢**
 ```
 find *.gz > input.list
 nohup java -Xmx50g -jar /public/jychu/soft/gatk-4.1.9.0/gatk-package-4.1.9.0-local.jar CombineGVCFs -R /public/jychu/refs/Gallus_gallus.GRCg6a.dna.toplevel.fa -V  input.list  -O ~/chicken_body_size/VCF/ALLSAMPLE.vcf.gz &
@@ -149,7 +148,6 @@ bsub -J chr10 -n 8 -R span[hosts=1] -o %J.out -e %J.err -q normal "java -Xmx80g 
 ```
 bsub -J chr33 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools concat  chrMT_typed.vcf.gz   chrW_typed.vcf.gz  chrZ_typed.vcf.gz  chr1_typed.vcf.gz   chr2_typed.vcf.gz  chr3_typed.vcf.gz chr4_typed.vcf.gz  chr5_typed.vcf.gz  chr6_typed.vcf.gz  chr7_typed.vcf.gz  chr8_typed.vcf.gz  chr9_typed.vcf.gz  chr10_typed.vcf.gz  chr11_typed.vcf.gz chr12_typed.vcf.gz   chr13_typed.vcf.gz  chr14_typed.vcf.gz  chr15_typed.vcf.gz  chr16_typed.vcf.gz  chr17_typed.vcf.gz chr18_typed.vcf.gz  chr19_typed.vcf.gz chr20_typed.vcf.gz chr21_typed.vcf.gz  chr22_typed.vcf.gz chr23_typed.vcf.gz chr24_typed.vcf.gz chr25_typed.vcf.gz chr26_typed.vcf.gz chr27_typed.vcf.gz chr28_typed.vcf.gz chr30_typed.vcf.gz  chr31_typed.vcf.gz chr32_typed.vcf.gz  chr33_typed.vcf.gz -o  chicken_typed.vcf.gz  --output-type z "
 ```
-###后面就可以用我们自己的服务器了
 - 为数据建立索引
 ```
 tabix -p vcf chicken_typed.vcf.gz
