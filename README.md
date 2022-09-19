@@ -1,25 +1,28 @@
 # SNP-CALLING-PIPLINE （gatk4.1.9版本）
 
 **预先安装的软件有`gatk4.1.9`、`bwa`、`samtools`、`bcftools`**
-- 传输文件  #如果用到外部服务器的话
+- 传输文件  （如果用到外部网盘的话）
 ```
 /Work/user/huanong/software/obsutil cp obs://baiyi/HuaNongShuJu/sus_scrofa_incl_consequences.vcf.gz ./
 ```
 - 先创建储存文件的目录
 ```
-cd /Work/user/huanong/project/Mangalica_clean_reads     #进入梅山猪的数据目录
+cd ~
+mkdir project    #创建一个项目
+cd project
+mkdir breeed1   #创建要进行snpcalling的品种的文件夹
+cd breed1     #进入breed1的数据目录
 mkdir -p  bam/markdup/SNP_calling  #创建文件夹
 ```
 - 给参考基因组以及dbsnp数据建立索引
 ```
 #下载参考基因组并建立索引
-cd /Work/user/huanong/ref/bwa/
+mkdir -p ~/ref/bwa/pig
+cd ~/ref/bwa/pig
 wget http://ftp.ensembl.org/pub/release-106/fasta/sus_scrofa/dna/Sus_scrofa.Sscrofa11.1.dna.toplevel.fa.gz
 gzip -d Sus_scrofa.Sscrofa11.1.dna.toplevel.fa.gz  #解压
 samtools faidx  Sus_scrofa.Sscrofa11.1.dna.toplevel.fa   #建立索引
-#下载dbsnp数据文件
-cd /Work/user/huanong/ref/vcf/
-wget  http://ftp.ensembl.org/pub/release-106/variation/vcf/sus_scrofa/sus_scrofa.vcf.gz
+wget  http://ftp.ensembl.org/pub/release-106/variation/vcf/sus_scrofa/sus_scrofa.vcf.gz  #下载dbsnp数据文件
 #处理dbsnp数据文件（因为不处理会报错：info那一列不允许有空格出现）
 zcat  sus_scrofa.vcf.gz|grep "#" >header.tmp 
 zcat  sus_scrofa.vcf.gz|grep -v "#"|tr " " "_" >body.tmp
@@ -35,9 +38,9 @@ tabix -p vcf sus_scrofa.vcf.gz
 cd /Work/user/huanong/ref/bwa
 bwa index -p Sus_scrofa Sus_scrofa.Sscrofa11.1.dna.toplevel.fa
 ```
-- 创建单个样本callsnp示例脚本
+- 运行单个样本callsnp
 ```
-cd /Work/user/huanong/project  #进入存放质控过的数据目录
+cd ~/project/breed1/cleandata  #进入存放质控过的数据目录
 vim SNP_CALLtest01.sh
 ```
 ```
