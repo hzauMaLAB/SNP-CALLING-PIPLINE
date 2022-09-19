@@ -10,7 +10,7 @@
 cd ~
 mkdir project    #创建一个项目
 cd project
-mkdir breeed1   #创建要进行snpcalling的品种的文件夹
+mkdir breed1   #创建要进行snpcalling的品种的文件夹
 cd breed1     #进入breed1的数据目录
 mkdir -p  bam/markdup/SNP_calling  #创建文件夹
 ```
@@ -35,7 +35,7 @@ tabix -p vcf sus_scrofa.vcf.gz
 ```
 - bwa建立索引
 ```
-cd /Work/user/huanong/ref/bwa
+cd cd ~/ref/bwa/pig
 bwa index -p Sus_scrofa Sus_scrofa.Sscrofa11.1.dna.toplevel.fa
 ```
 - 运行单个样本callsnp
@@ -46,10 +46,10 @@ vim SNP_CALLtest01.sh
 ```
 #!/usr/bin/bash
 SAMPLE=test01
-GENOME=/Work/user/huanong/ref/bwa/Sus_scrofa.Sscrofa11.1.dna.toplevel.fa
-INDEX='/Work/user/huanong/ref/bwa/Sus_scrofa'
-GATK=/Work/user/huanong/software/gatk/gatk-package-4.1.9.0-local.jar
-KNOWSITE1=/Work/user/huanong/ref/vcf/sus_scrofa.vcf.gz
+GENOME=~/ref/bwa/pig/Sus_scrofa.Sscrofa11.1.dna.toplevel.fa
+INDEX='~/huanong/ref/bwa/pig/Sus_scrofa'
+GATK=~/software/gatk/gatk-package-4.1.9.0-local.jar
+KNOWSITE1=~/ref/bwa/pig/sus_scrofa.vcf.gz
 GATKMEM=6g
 fq1=test01_1_out.fastq.gz
 fq2=test01_2_out.fastq.gz
