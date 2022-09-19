@@ -82,7 +82,6 @@ for i in `ls *_1_*|tr "_" "\t"|cut -f1`;do qsub -V -cwd -q all.q,fat.q -l vf=6G 
 find *.gz > input.list
 nohup java -Xmx50g -jar /public/jychu/soft/gatk-4.1.9.0/gatk-package-4.1.9.0-local.jar CombineGVCFs -R /public/jychu/refs/Gallus_gallus.GRCg6a.dna.toplevel.fa -V  input.list  -O ~/chicken_body_size/VCF/ALLSAMPLE.vcf.gz &
 ```
-###接下来是在作重服务器上的操作
 - gvcf合并后提取猪的不同染色体的vcf（分染色体）  可以用vcftools和bcftools提取，bcftools提取的时候会和原来的文件一模一样，vcftools提取的时候info那一列好像会改变一些信息，这个问题我没有仔细去研究
 - 1.vcftools提取
 ```
