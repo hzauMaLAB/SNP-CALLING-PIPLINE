@@ -110,111 +110,28 @@ bsub -J chrMT -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "vcftools --gz
 ```
 2.bcftools提取
 ```
-vi chrMT.region
-MT      1       16775      #tab键分割
+for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 X Y MT;do echo "$i 1 274330532"|tr " " "\t" > chr$i.region;done      
 bsub -J chrMT -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chrMT.region combine.vcf.gz --output bcftools/chrMT.vcf.gz --output-type z"
-vi chrW.region
-W    1    6813114
-bsub -J chrW -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chrW.region combine.vcf.gz --output bcftools/chrW.vcf.gz --output-type z"
-vi chrZ.region
-Z    1    82529921
-bsub -J chrZ -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chrZ.region combine.vcf.gz --output bcftools/chrZ.vcf.gz --output-type z"
-vi chr1.region
-1    1    197608386
+bsub -J chrW -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chrX.region combine.vcf.gz --output bcftools/chrX.vcf.gz --output-type z"
+bsub -J chrZ -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chrY.region combine.vcf.gz --output bcftools/chrY.vcf.gz --output-type z"
 bsub -J chr1 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr1.region combine.vcf.gz --output bcftools/chr1.vcf.gz --output-type z"
-vi chr2.region
-2    1    149682049
 bsub -J chr2 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr2.region combine.vcf.gz --output bcftools/chr2.vcf.gz --output-type z"
-vi chr3.region
-3    1    110838418
 bsub -J chr3 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr3.region combine.vcf.gz --output bcftools/chr3.vcf.gz --output-type z"
-vi chr4.region
-4    1    91315245
 bsub -J chr4 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr4.region combine.vcf.gz --output bcftools/chr4.vcf.gz --output-type z"
-vi chr5.region
-5    1    59809098
 bsub -J chr5 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr5.region combine.vcf.gz --output bcftools/chr5.vcf.gz --output-type z"
-vi chr6.region
-6    1    36374701
 bsub -J chr6 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr6.region combine.vcf.gz --output bcftools/chr6.vcf.gz --output-type z"
-vi chr7.region
-7    1    36742308
 bsub -J chr7 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr7.region combine.vcf.gz --output bcftools/chr7.vcf.gz --output-type z"
-vi chr8.region
-8    1    30219446
 bsub -J chr8 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr8.region combine.vcf.gz --output bcftools/chr8.vcf.gz --output-type z"
-vi chr9.region
-9    1    24153086
 bsub -J chr9 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr9.region combine.vcf.gz --output bcftools/chr9.vcf.gz --output-type z"
-vi chr10.region
-10   1    21119840
 bsub -J chr10 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr10.region combine.vcf.gz --output bcftools/chr10.vcf.gz --output-type z"
-vi chr11.region
-11    1    20200042
 bsub -J chr11 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr11.region combine.vcf.gz --output bcftools/chr11.vcf.gz --output-type z"
-vi chr12.region
-12    1    20387278
 bsub -J chr12 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr12.region combine.vcf.gz --output bcftools/chr12.vcf.gz --output-type z"
-vi chr13.region
-13    1    19166714
 bsub -J chr13 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr13.region combine.vcf.gz --output bcftools/chr13.vcf.gz --output-type z"
-vi chr14.region
-14    1    16219308
 bsub -J chr14 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr14.region combine.vcf.gz --output bcftools/chr14.vcf.gz --output-type z"
-vi chr15.region
-15    1    13062184
 bsub -J chr15 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr15.region combine.vcf.gz --output bcftools/chr15.vcf.gz --output-type z"
-vi chr16.region
-16    1    2844601
 bsub -J chr16 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr16.region combine.vcf.gz --output bcftools/chr16.vcf.gz --output-type z"
-vi chr17.region
-17    1    10762512
 bsub -J chr17 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr17.region combine.vcf.gz --output bcftools/chr17.vcf.gz --output-type z"
-vi chr18.region
-18    1    11373140
 bsub -J chr18 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr18.region combine.vcf.gz --output bcftools/chr18.vcf.gz --output-type z"
-vi chr19.region
-19    1    10323212
-bsub -J chr19 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr19.region combine.vcf.gz --output bcftools/chr19.vcf.gz --output-type z"
-vi chr20.region
-20    1    13897287
-bsub -J chr20 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr20.region combine.vcf.gz --output bcftools/chr20.vcf.gz --output-type z"
-vi chr21.region
-21    1    6844979
-bsub -J chr21 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr21.region combine.vcf.gz --output bcftools/chr21.vcf.gz --output-type z"
-vi chr22.region
-22    1    5459462
-bsub -J chr22 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr22.region combine.vcf.gz --output bcftools/chr22.vcf.gz --output-type z"
-vi chr23.region
-23    1    6149580
-bsub -J chr23 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr23.region combine.vcf.gz --output bcftools/chr23.vcf.gz --output-type z"
-vi chr24.region
-24    1    6491222
-bsub -J chr24 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr24.region combine.vcf.gz --output bcftools/chr24.vcf.gz --output-type z"
-vi chr25.region
-25    1    3980610
-bsub -J chr25 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr25.region combine.vcf.gz --output bcftools/chr25.vcf.gz --output-type z"
-vi chr26.region
-26   1    6055710
-bsub -J chr26 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr26.region combine.vcf.gz --output bcftools/chr26.vcf.gz --output-type z"
-vi chr27.region
-27    1    8080432
-bsub -J chr27 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr27.region combine.vcf.gz --output bcftools/chr27.vcf.gz --output-type z"
-vi chr28.region
-28    1    5116882
-bsub -J chr28 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr28.region combine.vcf.gz --output bcftools/chr28.vcf.gz --output-type z"
-vi chr30.region
-30     1        1818525
-bsub -J chr30 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr30.region combine.vcf.gz --output bcftools/chr30.vcf.gz --output-type z"
-vi chr31.region
-31    1    6153034
-bsub -J chr31 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr31.region combine.vcf.gz --output bcftools/chr31.vcf.gz --output-type z"
-vi chr32.region
-32    1    725831
-bsub -J chr32 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr32.region combine.vcf.gz --output bcftools/chr32.vcf.gz --output-type z"
-vi chr33.region
-33    1    7821666
-bsub -J chr33 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chr33.region combine.vcf.gz --output bcftools/chr33.vcf.gz --output-type z"
 ```
 - 对提取出来的vcf文件建立索引
 ```
@@ -222,8 +139,8 @@ tabix -p vcf chr*.region combine.vcf.gz       #这样概括所有的染色体，
 ```
 - 添加注释并genotype
 ```
-wget http://ftp.ensembl.org/pub/release-103/variation/vcf/gallus_gallus/gallus_gallus.vcf.gz
-bsub -J chr10 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "tabix -p vcf gallus_gallus.vcf.gz "
+wget http://ftp.ensembl.org/pub/release-106/variation/vcf/sus_scrofa/sus_scrofa.vcf.gz
+bsub -J chr10 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "tabix -p vcf sus_scrofa.vcf.gz"
 bsub -J chr10 -n 8 -R span[hosts=1] -o %J.out -e %J.err -q normal "java -Xmx80g -jar /public/home/hsong/jychu/soft/gatk-4.1.9.0/gatk-package-4.1.9.0-local.jar  GenotypeGVCFs -R /public/home/hsong/jychu/refs/Gallus_gallus.GRCg6a.dna.toplevel.fa -V chr10.vcf.gz --dbsnp gallus_gallus.vcf.gz -O  chr10_typed.vcf.gz"
 #chr10_typed.vcf.gz 如果没有索引，也要建立索引
 ```
