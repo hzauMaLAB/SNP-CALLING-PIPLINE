@@ -85,7 +85,7 @@ nohup java -Xmx50g -jar /public/jychu/soft/gatk-4.1.9.0/gatk-package-4.1.9.0-loc
 ```
 ###接下来是在作重服务器上的操作
 - gvcf合并后提取猪的不同染色体的vcf（分染色体）  可以用vcftools和bcftools提取，bcftools提取的时候会和原来的文件一模一样，vcftools提取的时候info那一列好像会改变一些信息，这个问题我没有仔细去研究
-1.vcftools提取
+- 1.vcftools提取
 ```
 bsub -J chr1 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "vcftools --gzvcf combine.vcf.gz --chr 1 --recode --stdout | bgzip -c >pig_chr1.vcf.gz"
 bsub -J chr2 -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "vcftools --gzvcf combine.vcf.gz --chr 2 --recode --stdout | bgzip -c >pig_chr2.vcf.gz"
@@ -109,7 +109,7 @@ bsub -J chrX -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "vcftools --gzv
 bsub -J chrY -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "vcftools --gzvcf combine.vcf.gz --chr Y --recode --stdout | bgzip -c >pig_chrY.vcf.gz"
 bsub -J chrMT -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "vcftools --gzvcf combine.vcf.gz --chr MT --recode --stdout | bgzip -c >pig_chrMT.vcf.gz"
 ```
-2.bcftools提取
+- 2.bcftools提取
 ```
 for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 X Y MT;do echo "$i 1 274330532"|tr " " "\t" > chr$i.region;done      
 bsub -J chrMT -n 1 -R span[hosts=1] -o %J.out -e %J.err -q normal "/public/home/hsong/jychu/soft/bcftools-1.8/bcftools filter -R chrMT.region combine.vcf.gz --output bcftools/chrMT.vcf.gz --output-type z"
