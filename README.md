@@ -1,5 +1,5 @@
 # SNP-CALLING-PIPLINE
-This is the initial version created by JYChu
+`This is the initial version created by JYChu`
 **预先安装的软件有`gatk4.1.9`、`bwa`、`samtools`、`bcftools`**
 - 传输文件
 ```
