@@ -1,10 +1,6 @@
 # SNP-CALLING-PIPLINE （gatk4.1.9版本）
 
 **预先安装的软件有`gatk4.1.9`、`bwa`、`samtools`、`bcftools`**
-- 传输文件  （如果用到外部网盘的话）
-```
-/Work/user/huanong/software/obsutil cp obs://baiyi/HuaNongShuJu/sus_scrofa_incl_consequences.vcf.gz ./
-```
 - 先创建储存文件的目录
 ```
 cd ~
