@@ -36,11 +36,12 @@ bwa index -p Sus_scrofa Sus_scrofa.Sscrofa11.1.dna.toplevel.fa
 ```
 - 运行单个样本callsnp
 ```
-cd ~/project/breed1/cleandata  #进入存放质控过的数据目录
+cd ~/project/breed1/cleandata  #进入存放质控过的数据目录\
+vim ~/project/SNP_CALLtest01.sh    #创建一个最底层callsnp脚本
 ```
 - 运行
 ```
-for i in `ls *_1_*|tr "_" "\t"|cut -f1`;do sed "s/test01/$i/g" ../SNP_CALLtest01.sh >SNP_CALL$i.sh;done    #批量替换脚本名
+for i in `ls *_1_*|tr "_" "\t"|cut -f1`;do sed "s/test01/$i/g" ../../SNP_CALLtest01.sh >SNP_CALL$i.sh;done    #批量替换脚本名
 for i in `ls *_1_*|tr "_" "\t"|cut -f1`;do qsub -V -cwd -q all.q,fat.q -l vf=6G -pe smp 3 -S /bin/bash  SNP_CALL$i.sh;done  #qsub提交系统批量提交任务
 ```
 - gvcf合并(要等所有样本的gvcf都出来之后，可以分群体也可以一块合并，如果分群体最后也是要一块合并的)
