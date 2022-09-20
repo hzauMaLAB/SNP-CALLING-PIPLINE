@@ -1,12 +1,12 @@
 
 #!/usr/bin/bash
 SAMPLE=test01
-GENOME=/Work/user/huanong/ref/bwa/Sus_scrofa.Sscrofa11.1.dna.toplevel.fa
-INDEX='/Work/user/huanong/ref/bwa/Sus_scrofa'
-GATK=/Work/user/huanong/software/gatk/gatk-package-4.1.9.0-local.jar
-KNOWSITE1=/Work/user/huanong/ref/vcf/sus_scrofa.vcf.gz
+GENOME=~/ref/bwa/pig/Sus_scrofa.Sscrofa11.1.dna.toplevel.fa
+INDEX='~/ref/bwa/pig/Sus_scrofa'
+GATK=~/software/gatk/gatk-package-4.1.9.0-local.jar
+KNOWSITE1=~/ref/bwa/pig/sus_scrofa.vcf.gz
 GATKMEM=6g
-fq1=test01_1_out.fastq.gz
+fq1=test01_1_out.fastq.gz       #cleandata
 fq2=test01_2_out.fastq.gz
 
 #比对(850Mb原始双端数据，2cpu消耗55min)
